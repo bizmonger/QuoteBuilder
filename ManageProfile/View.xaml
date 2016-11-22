@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:manageProfile="clr-namespace:ManageProfile;assembly=ManageProfile"
+             Title=" Profile"
+             x:Class="ManageProfile.View">
+
+    <ContentPage.BindingContext>
+        <manageProfile:ViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding BusinessName}" Placeholder="business name" TextColor="#99D9EA" />
+        <Entry Grid.Row="1" Grid.Column="0" Text="{Binding FirstName}" Placeholder="first name" />
+        <Entry Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" Placeholder="second name" />
+        
+        <Entry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Email}" Placeholder="email" />
+        
+        <Entry Grid.Row="3" Grid.Column="0" Text="{Binding Address1}" Placeholder="address 1" />
+        <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Address2}" Placeholder="address 2" />
+        <Entry Grid.Row="4" Grid.Column="0" Text="{Binding City}" Placeholder="city" />
+        <Entry Grid.Row="4" Grid.Column="1" Text="{Binding State}" Placeholder="state" />
+        <Entry Grid.Row="5" Grid.Column="0" Text="{Binding Postal}" Placeholder="postal" />
+        <Entry Grid.Row="5" Grid.Column="1" Text="{Binding Phone}" Placeholder="phone" />
+
+        <Button Grid.Row="6" Grid.Column="0" Text="Cancel" Command="{Binding Cancel}" />
+        <Button Grid.Row="6" Grid.Column="1" Text="Save" Command="{Binding Save}" />
+    </Grid>
+</ContentPage>

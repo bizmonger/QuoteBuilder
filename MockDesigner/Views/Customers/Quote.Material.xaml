@@ -1,0 +1,31 @@
+﻿<Window x:Class="MockDesigner.Views.Quote.Quote"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MockDesigner.Views.Quote"
+        mc:Ignorable="d"
+        Title="Quote" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Pick material for service..." />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="service name" />
+        <ComboBox Grid.Row="2" Grid.Column="0" />
+        <Button Grid.Row="2" Grid.Column="1" Content="Apply" />
+        <ListView Grid.Row="4" Grid.ColumnSpan="2" Height="50" />
+        <Button Grid.Row="3" Grid.Column="1" Content="Continue" />
+    </Grid>
+    
+</Window>

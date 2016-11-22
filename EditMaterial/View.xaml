@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editMaterial="clr-namespace:EditMaterial;assembly=EditMaterial"
+             Title=" Edit Material"
+             x:Class="EditMaterial.View">
+    
+    <ContentPage.BindingContext>
+        <editMaterial:ViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Text="Name:" VerticalOptions="Center" />
+        <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Name}" TextColor="#99D9EA" />
+        <Label Grid.Row="1" Grid.Column="0" Text="Cost:" VerticalOptions="Center" />
+        <Entry Grid.Row="1" Grid.Column="1" Text="{Binding BaseCost}" />
+        <Label Grid.Row="2" Grid.Column="0" Text="Sell Price:" VerticalOptions="Center" />
+        <Entry Grid.Row="2" Grid.Column="1" Text="{Binding MarkupPrice}" />
+        <Label Grid.Row="3" Grid.Column="0" Text="Unit Type:" VerticalOptions="Center" />
+        <Entry Grid.Row="3" Grid.Column="1" Text="{Binding UnitType}" />
+        <Label Grid.Row="4" Grid.Column="0" Text="Quantity:" VerticalOptions="Center" />
+        <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Quantity}" />
+        <Entry Grid.Row="5" Grid.ColumnSpan="2" Text="{Binding Description}" Placeholder="description" />
+
+        <Button Grid.Row="6" Grid.Column="0" Text="Cancel" Command="{Binding Cancel}" />
+        <Button Grid.Row="6" Grid.Column="1" Text="Save" Command="{Binding Save}" />
+        
+    </Grid>
+</ContentPage>

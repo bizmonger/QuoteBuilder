@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4CE3D4C-2D16-4DC8-8D9F-738FC87964F2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuoteBuilder</RootNamespace>
+    <AssemblyName>QuoteBuilder</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="IOFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Bizmonger.Patterns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Bizmonger.Patterns.3.0.3\lib\portable-net45+wp8+win8\Bizmonger.Patterns.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLite-net, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\sqlite-net-pcl.1.0.11\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLitePCL.raw, Version=0.8.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCL.raw_basic.0.8.2\lib\portable-net45+netcore45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCL.raw.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GettingStarted.Xamarin" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\Backup_TEMPLATE.htm" />
+    <Content Include="Templates\FooterLogo.png" />
+    <Content Include="Templates\HeaderLogo_CreateInvoice.png" />
+    <Content Include="Templates\HeaderLogo_Invoice.png" />
+    <EmbeddedResource Include="Templates\HeaderLogo_Quote.jpg" />
+    <Content Include="Templates\Logo.jpeg" />
+    <EmbeddedResource Include="Templates\MATERIAL_TEMPLATE.htm" />
+    <EmbeddedResource Include="Templates\QUOTE_TEMPLATE.htm" />
+    <EmbeddedResource Include="Templates\SERVICE_MATERIAL_TEMPLATE.htm" />
+    <EmbeddedResource Include="Templates\SERVICE_TEMPLATE.htm" />
+    <EmbeddedResource Include="Templates\TEMPLATE.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AddMaterial\AddMaterial.csproj">
+      <Project>{f375c745-a566-4030-8a19-4a41f8ad7af4}</Project>
+      <Name>AddMaterial</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AddService\AddService.csproj">
+      <Project>{b74acd2a-5629-4071-be40-0f7ae2d43229}</Project>
+      <Name>AddService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Connectivity\Connectivity.csproj">
+      <Project>{f1290059-c29c-4be6-a3a0-cbb67ac9c20e}</Project>
+      <Name>Connectivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CreateQuote\CreateQuote.csproj">
+      <Project>{de73b10b-70e9-4fa2-bfae-e9fab32f9e2e}</Project>
+      <Name>CreateQuote</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Databases\Databases.csproj">
+      <Project>{87490672-bffb-4e65-bc9d-8e2e999e1895}</Project>
+      <Name>Databases</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EditMaterial\EditMaterial.csproj">
+      <Project>{3beec910-9b56-4c99-81ba-2e33a1288133}</Project>
+      <Name>EditMaterial</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EditService\EditService.csproj">
+      <Project>{0ed0b319-ddf7-4d7e-a183-bd0606d34a96}</Project>
+      <Name>EditService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Entities\Entities.csproj">
+      <Project>{22a1712e-6114-426d-b8cc-0d84fc20491c}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IO\IO.csproj">
+      <Project>{11a47ae7-020a-472a-a053-8055af623183}</Project>
+      <Name>IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ManageMaterials\ManageMaterials.csproj">
+      <Project>{40925436-9680-4e65-85d3-f638a3e6410b}</Project>
+      <Name>ManageMaterials</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ManageProfile\ManageProfile.csproj">
+      <Project>{1d08caf8-39a6-4eda-a760-9cebafa33ee9}</Project>
+      <Name>ManageProfile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ManageServiceMaterials\ManageServiceMaterials.csproj">
+      <Project>{4f8fe405-ebb7-4b08-8fcf-e29653e9c0d6}</Project>
+      <Name>ManageServiceMaterials</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ManageServices\ManageServices.csproj">
+      <Project>{bf6c63ec-72d0-497d-b1a8-ac264d50a934}</Project>
+      <Name>ManageServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Mediation\Mediation.csproj">
+      <Project>{97243054-e555-4d6f-8115-272528185cbd}</Project>
+      <Name>Mediation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Repositories\Repositories.csproj">
+      <Project>{9afe325e-d0b5-4b52-a091-bdace57ecf67}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SearchCustomers\SearchCustomers.csproj">
+      <Project>{3b794015-40ab-44ef-a984-cd152904dcff}</Project>
+      <Name>SearchCustomers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Servers\Servers.csproj">
+      <Project>{1d85c82d-78a6-42ed-912f-46a06e249b15}</Project>
+      <Name>Servers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TestAPI\TestAPI.csproj">
+      <Project>{b2146d10-4cb8-420c-af50-2736ac0ec711}</Project>
+      <Name>TestAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UILogic\UILogic.csproj">
+      <Project>{55c7da3d-f66f-4533-acb3-9559970192ac}</Project>
+      <Name>UILogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ViewMenu\ViewMenu.csproj">
+      <Project>{9d000a9b-06d4-4730-b6ab-49cad9689a9e}</Project>
+      <Name>ViewMenu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ViewQuote\ViewQuote.csproj">
+      <Project>{48468856-6192-4d07-b6fa-0708a65af868}</Project>
+      <Name>ViewQuote</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

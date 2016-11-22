@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title=" Customers"
+             xmlns:searchCustomers="clr-namespace:SearchCustomers;assembly=SearchCustomers"
+             x:Class="SearchCustomers.View">
+
+    <ContentPage.BindingContext>
+        <searchCustomers:ViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <SearchBar Grid.Row="0" Grid.Column="0" Text="{Binding SearchText}" SearchCommand="{Binding Search}" VerticalOptions="Start" />
+
+        <ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Results}" SelectedItem="{Binding SelectedCustomer}"  HorizontalOptions="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid HorizontalOptions="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding FirstName}" HorizontalOptions="Center" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding LastName}" HorizontalOptions="Center" />
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="2" Grid.Column="0" Text="View" Command="{Binding View}" />
+    </Grid>
+</ContentPage>

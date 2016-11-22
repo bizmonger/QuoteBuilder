@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:EnterCustomer="clr-namespace:CreateQuote.EnterCustomer;assembly=CreateQuote"
+             Title=" Customer Quote"
+             x:Class="CreateQuote.EnterCustomer.View">
+
+    <ContentPage.BindingContext>
+        <EnterCustomer:ViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Placeholder="quote title" Text="{Binding Title}" TextColor="#99D9EA" />
+
+        <Entry Grid.Row="1" Grid.Column="0"  Placeholder="first name" Text="{Binding FirstName}" />
+        <Entry Grid.Row="1" Grid.Column="1" Placeholder="last name" Text="{Binding LastName}" />
+        <Entry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="customer email" Text="{Binding Email}" />
+
+        <Entry Grid.Row="3" Grid.Column="0" Placeholder="Phone" Text="{Binding Phone}" />
+
+        <Grid Grid.Row="3" Grid.Column="1" Padding="10,0" VerticalOptions="End">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Text="Subtotal:" />
+            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Subtotal, StringFormat='{}{0:c}'}" TextColor="Yellow" HorizontalOptions="End" />
+
+            <Label Grid.Row="1" Grid.Column="0" Text="Tax:" />
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Tax, StringFormat='{}{0:#,#.00}'}" TextColor="Yellow" HorizontalOptions="End" />
+
+            <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Silver"/>
+                
+            <Label Grid.Row="3" Grid.Column="0" Text="Total:" />
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Total, StringFormat='{}{0:c}'}" TextColor="Yellow" HorizontalOptions="End" />
+        </Grid>
+
+        <Button Grid.Row="4" Grid.Column="0"  Text="Previous" Command="{Binding Previous}"  
+                VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+
+        <Button Grid.Row="4" Grid.Column="1"  Text="Generate" Command="{Binding Generate}"  
+                VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+    </Grid>
+</ContentPage>

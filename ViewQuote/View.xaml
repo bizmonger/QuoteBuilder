@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewQuote="clr-namespace:ViewQuote;assembly=ViewQuote"
+             Title=" Generated Quote"
+             x:Class="ViewQuote.View">
+    
+    <ContentPage.BindingContext>
+        <viewQuote:ViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Sent" TextColor="Green" IsVisible="{Binding IsSent}" HorizontalOptions="FillAndExpand" FontAttributes="Bold,Italic" XAlign="Center" />
+        <WebView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Source="{Binding File}" />
+
+        <Button Grid.Row="2" Grid.Column="0" Text="Home" Command="{Binding Home}" />
+        <Button Grid.Row="2" Grid.Column="1" Text="{Binding State}" Command="{Binding Send}" />
+    </Grid>
+
+</ContentPage>

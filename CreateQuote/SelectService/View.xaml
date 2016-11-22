@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:selectServices="clr-namespace:CreateQuote.SelectServices;assembly=CreateQuote"
+             xmlns:converters="clr-namespace:UILogic.Converters;assembly=UILogic"
+             Title=" New Quote"
+             x:Class="CreateQuote.SelectServices.View">
+
+    <ContentPage.BindingContext>
+        <selectServices:ViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:MaterialsToCostConverter x:Key="MaterialsToCostConverter" />
+            <converters:TotalCostConverter x:Key="TotalCostConverter" />
+
+            <Style x:Key="SelectedServiceStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="Yellow"/>
+            </Style>
+
+            <Style x:Key="ServiceHeaderStyle" TargetType="Label" BasedOn="{StaticResource SelectedServiceStyle}">
+                <Setter Property="TextColor" Value="Gray"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="Pick a service..." FontAttributes="Bold" />
+        <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" HorizontalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Name}" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Description}" Opacity="0.5" />
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource materialsButtonStyle}" Text="{Binding SelectedService.Materials.Count, StringFormat='({0:F0}) Materials...'}" 
+                Command="{Binding ViewMaterials}">
+            <Button.Triggers>
+                <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                    <Setter Property="TextColor" Value="Gray" />
+                </Trigger>
+            </Button.Triggers>
+        </Button>
+
+        <Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Text="Add" Command="{Binding Add}" />
+
+        <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"  HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Silver"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Text="Name" Style="{StaticResource ServiceHeaderStyle}" XAlign="Start" />
+        <Label Grid.Row="4" Grid.Column="1" Text="Labor" Style="{StaticResource ServiceHeaderStyle}" XAlign="Center" />
+        <Label Grid.Row="4" Grid.Column="2" Text="Materials" Style="{StaticResource ServiceHeaderStyle}" XAlign="Center" />
+        <Label Grid.Row="4" Grid.Column="3" Text="Total" Style="{StaticResource ServiceHeaderStyle}" XAlign="End" />
+
+        <ListView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding SelectedServices}" SelectedItem="{Binding PromotedService}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" Style="{StaticResource SelectedServiceStyle}" XAlign="Start" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding LaborCost, StringFormat='{}{0:c}'}" Style="{StaticResource SelectedServiceStyle}" XAlign="Center" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Materials, Converter={StaticResource MaterialsToCostConverter}, StringFormat='{}{0:c}'}}" Style="{StaticResource SelectedServiceStyle}" XAlign="Center" />
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding ., Converter={StaticResource TotalCostConverter}, StringFormat='{}{0:c}'}" Style="{StaticResource SelectedServiceStyle}" XAlign="End" />
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Description}" TextColor="White" Opacity="0.5" />
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="Remove" Command="{Binding Remove}" />
+        <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Text="Next..." Command="{Binding Next}" />
+    </Grid>
+</ContentPage>

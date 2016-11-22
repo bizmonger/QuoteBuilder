@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:addMaterial="clr-namespace:AddMaterial;assembly=AddMaterial"
+             Title=" Add Material"
+             x:Class="AddMaterial.View">
+    
+    <ContentPage.BindingContext>
+        <addMaterial:ViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Name}" Placeholder="name" />
+        <Entry Grid.Row="1" Grid.Column="0" Text="{Binding BaseCost}" Placeholder="base cost" />
+        <Entry Grid.Row="1" Grid.Column="1" Text="{Binding MarkupPrice}" Placeholder="markup price" />
+        <Entry Grid.Row="2" Grid.Column="0" Text="{Binding UnitType}" Placeholder="unit type" />
+        <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Quantity}" Placeholder="quantity" />
+        <Entry Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding Description}" Placeholder="description" />
+
+        <Button Grid.Row="4" Grid.Column="0" Text="Cancel" Command="{Binding Cancel}" />
+        <Button Grid.Row="4" Grid.Column="1" Text="Save" Command="{Binding Save}" />
+    </Grid>
+    
+</ContentPage>

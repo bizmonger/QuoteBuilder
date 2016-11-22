@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewMenu="clr-namespace:ViewMenu;assembly=ViewMenu"
+             Title=" QuoteBuilder"
+             x:Class="ViewMenu.View">
+
+    <ContentPage.BindingContext>
+        <viewMenu:ViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid HorizontalOptions="Fill">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource menuButtonStyle}"  Text="Quote" Command="{Binding NewQuote}" />
+        <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource menuButtonStyle}" Text="Customers" Command="{Binding ViewCustomers}" />
+        <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource menuButtonStyle}" Text="Services" Command="{Binding ViewServices}" />
+        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource menuButtonStyle}" Text="Materials" Command="{Binding ViewMaterials}" />
+        <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource menuButtonStyle}" Text="Profile" Command="{Binding ViewProfile}" />
+
+        <Grid Grid.Row="3" Grid.Column="0" ColumnSpan="2" HorizontalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="BusinessLink" Grid.Row="1" Grid.Column="0"  Text="© 2015 Bizmonger Inc." TextColor="#6d6e6e">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ViewBusinessPage}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Grid.Row="1" Grid.Column="1"  Text=" | " TextColor="#6d6e6e" />
+            <Label x:Name="SupportLink" Grid.Row="1" Grid.Column="2"  Text="Support@bizmonger.net" TextColor="#6d6e6e">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PrepareEmail}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </Grid>
+</ContentPage>

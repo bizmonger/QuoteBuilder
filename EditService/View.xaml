@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editService="clr-namespace:EditService;assembly=EditService"
+             Title=" Edit Service"
+             x:Class="EditService.View">
+
+    <ContentPage.BindingContext>
+        <editService:ViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Name}" TextColor="#99D9EA" Placeholder="name" />
+        <Entry Grid.Row="1" Grid.Column="0" Text="{Binding LaborCost}" Placeholder="price" />
+        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource materialsButtonStyle}" 
+                Text="{Binding Materials.Count, StringFormat='({0:F0}) Materials...'}" Command="{Binding ViewMaterials}" />
+
+        <Label Grid.Row="2" Grid.Column="0" Text="Tax Percentage:" VerticalOptions="Center" />
+        <Entry Grid.Row="2" Grid.Column="1" Text="{Binding TaxPercentage}" Placeholder="tax percentage" />
+        <Entry Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" Text="{Binding Description}" Placeholder="description" />
+
+        <Button Grid.Row="4" Grid.Column="0" Text="Cancel" Command="{Binding Cancel}" />
+        <Button Grid.Row="4" Grid.Column="1" Text="Save" Command="{Binding Update}" />
+    </Grid>
+</ContentPage>

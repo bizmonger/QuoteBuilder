@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:manageServices="clr-namespace:ManageServices;assembly=ManageServices"
+             xmlns:converters="clr-namespace:UILogic.Converters;assembly=UILogic"
+             Title=" Services"
+             x:Class="ManageServices.View">
+
+    <ContentPage.BindingContext>
+        <manageServices:ViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:MaterialsToCostConverter x:Key="MaterialsToCostConverter" />
+            <converters:InstanceToBoolConverter x:Key="InstanceToBoolConverter" />
+            <converters:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Services}" SelectedItem="{Binding SelectedService}" HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.ColumnSpan="2"  Text="{Binding Name}" FontAttributes="Bold" TextColor="#99D9EA" />
+                                <Label Grid.Row="1" Grid.Column="0" Text="Labor:" />
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding LaborCost, StringFormat='{}{0:c}'}"  />
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="Materials:" />
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Materials, Converter={StaticResource MaterialsToCostConverter}, StringFormat='{}{0:c}'}}" />
+
+                                <Label Grid.Row="3" Grid.Column="0" Text="Description:" />
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Description}" />
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="1" Grid.Column="0"  Text="Return" Command="{Binding Finish}"/>
+        <Button Grid.Row="1" Grid.Column="1"  Text="New..." Command="{Binding New}"/>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Text="Details..." 
+                Command="{Binding Edit}" IsVisible="{Binding Services.Count, Converter={StaticResource CountToVisibilityConverter}}" />
+    </Grid>
+</ContentPage>

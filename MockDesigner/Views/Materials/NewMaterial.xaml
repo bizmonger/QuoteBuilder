@@ -1,0 +1,27 @@
+﻿<Window x:Class="MockDesigner.Views.Materials"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MockDesigner.Views"
+        mc:Ignorable="d"
+        Title="Materials" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.Row="0" Grid.ColumnSpan="2" Text="name" />
+        <TextBox Grid.Row="1" Grid.ColumnSpan="2" Text="description" />
+
+        <TextBox Grid.Row="2" Grid.Column="0" Text="unit type" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="qty" />
+    </Grid>
+</Window>
