@@ -46,10 +46,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Patterns\Bizmonger.Patterns.csproj">
-      <Project>{d0463bca-3e04-4495-80f8-14032dd99e73}</Project>
-      <Name>Bizmonger.Patterns</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{22a1712e-6114-426d-b8cc-0d84fc20491c}</Project>
       <Name>Entities</Name>
@@ -68,6 +64,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Bizmonger.Patterns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bizmonger.Patterns.3.0.3\lib\portable-net45+wp8+win8\Bizmonger.Patterns.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.1.4.4.6392\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
